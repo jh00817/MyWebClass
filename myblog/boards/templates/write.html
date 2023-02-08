@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+<div class="container">
+  <form action="write-board/" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" name="title" id="title">
+    </div>
+    <div class="mb-3">
+          <label for="author">Author</label>
+          <input type="text" class="form-control" name="author" id="author"
+            value="{{ request.user }}" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="content">Content</label>
+        <textarea type="text" class="form-control" name="content" id="content"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">제출하기</button>
+  </form>
+</div>
+
+<footer class="py-3 bg-grey">
+    <p class="m-0 text-dark text-center ">Copyright &copy; Jhmocu@gmail.com</p>
+</footer>
+</body>
+</html>

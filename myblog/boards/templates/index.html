@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for board in board_list %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ board.title }}</h2>
+                    <p class="card-text text-muted h6">{{ board.author }} | {{ board.created_on}} </p>
+                    <p class="card-text">{{board.content|slice:":200" }}</p>
+                    <a href="{% url 'detail' board.id %}" class="btn btn-primary">더보기 &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% if is_paginated %}
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+                {% endif %}
+            </ul>
+            {% endif %}
+
+        </div>
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="py-3 bg-grey">
+    <p class="m-0 text-dark text-center ">Copyright &copy; Jhmocu@gmail.com</p>
+</footer>
+</body>
+</html>

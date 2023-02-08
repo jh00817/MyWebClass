@@ -1,0 +1,28 @@
+{% block sidebar %}
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+
+
+</style>
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4 float-right ">
+    <div class="card my-4">
+        <h5 class="card-header">About Me</h5>
+        <div class="card-body">
+            {% load static %}
+            <p class="card-text text-center"><img src="{% static 'img/me.jpg' %}" width="100" height="100"></p>
+            <p class="card-text text-center"><span style="font-size: 16pt">목진혁</span></p>
+            <p class="card-text text-center"><span style="font-size: 16pt">jhmocu@gmail.com</span></p>
+            <p class="card-text">웹 애플리케이션 개발, 스마트폰 애플리케이션 개발, 각종 프로그래밍 강의 진행</p>
+
+            <a href="https://jhmocu.tistory.com/"
+               class="btn btn-danger">Know more!</a>
+        </div>
+    </div>
+</div>
+
+{% endblock sidebar %}
